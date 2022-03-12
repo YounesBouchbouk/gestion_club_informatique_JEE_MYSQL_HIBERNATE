@@ -12,6 +12,12 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipseLink2.5.2">
 		<attributes>
 			<attribute name="owner.project.facets" value="jpt.jpa;#system#"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hyber2.0.filnal">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>

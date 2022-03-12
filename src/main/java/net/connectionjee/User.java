@@ -62,6 +62,8 @@ public class User {
 		this.token = token;
 		this.state = state;
 	}
+	
+
 
 
 	public int getId() {
