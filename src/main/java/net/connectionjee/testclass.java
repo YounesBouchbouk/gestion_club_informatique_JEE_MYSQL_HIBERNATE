@@ -44,7 +44,8 @@ public class testclass {
            
            //System.out.println("we get this new" + a);
             
-            String isadm = bguser.Generatenewtoken();
+            String isadm = bguser.SendTokenToEmail();
+            
             System.out.println("wache admin " + isadm );
 
             
@@ -54,6 +55,7 @@ public class testclass {
             tx.begin();
 
             System.out.println("blalalal " + 35 );
+            
 //            Query query2 = entityManager.createNativeQuery("INSERT INTO User_role (roleid, userid) VALUES (?,?)");
 //            query2.setParameter(1, 2);
 //            query2.setParameter(2, newuser.getId());
@@ -71,12 +73,12 @@ public class testclass {
 //            
 //            User user2 = (User) query.getSingleResult();             
             tx.begin();
-            Query query = entityManager.createNativeQuery("SELECT  id, email, password, CIN, CNE, filiere, inscription, token, state  FROM  User u  Join User_role r  WHERE   u.id = r.userid AND  r.roleid = 2",User.class);
-             List<User> users =  query.getResultList();
+            //Query query = entityManager.createNativeQuery("SELECT  id, email, password, CIN, CNE, filiere, inscription, token, state  FROM  User u  Join User_role r  WHERE   u.id = r.userid AND  r.roleid = 2",User.class);
+             List<User> users =  bguser.getAllUsers();
              tx.commit();
             //System.out.println( "Rôles associés hh  " + String.valueOf(user2.getId()));
             for( User suser : users ) {
-                System.out.println( "Email : " + suser.getId() );
+                System.out.println( " ha Email : " + suser.getId() );
             }
 
             Role role = entityManager.find( Role.class, 1 );            

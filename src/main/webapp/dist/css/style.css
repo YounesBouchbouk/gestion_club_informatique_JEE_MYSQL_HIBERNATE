@@ -1,0 +1,185 @@
+/*--- Style Entête ---*/
+	.nav-head{
+		background-color: whitesmoke;
+		font-size: 13px;
+		color: #fff;
+		padding: 10px 20px;
+		letter-spacing: .5px;
+	}
+	.nav-head p a{
+		font-size: 13px;
+		color: #fff;
+		text-decoration: none; 
+		outline: 0;
+		border-bottom: solid 1px #fff;
+	}
+	.nav-head p span{
+		font-size: 11px;
+		color: #EBECFD;
+		font-weight: bold;
+		letter-spacing: 1px;
+	}
+	.nav-head p{
+		margin: 2px 0;
+	}
+	.nav-head .fa-fb{
+		border-bottom: none;
+	}
+	.nav-head .fa-fb .fa{
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 50%;
+		background-color: #fff;
+		color: #32C1CE;
+		text-align: center;
+		margin-right: 10px;
+		padding-left: 1px;
+	}
+	@media(min-width: 992px){
+		.nav-head .head-gram{ 
+			text-align: right;
+		}
+	}
+	@media(max-width: 991px){
+		.nav-head{
+			text-align: center;
+		}
+	}
+/*--- Style Entête ---*/
+
+/*--- Style général ---*/
+
+
+    .row{
+    	margin: 0 auto;
+    }
+	.forms-box{
+		width: 800px;
+		padding: 8% 3%;
+		background-color: #f8f9fa;
+	}
+	.titre{
+		text-align: center;
+	}
+	.titre h4{
+		display: inline-block;
+		color: #555;
+		background-color: #e7e7e7;
+		border-bottom: solid 3px #999;
+		border-radius: 4px;
+		padding: 15px 8px;
+		font-size: 18px;
+		font-weight: 600;
+		letter-spacing: 0.5px;
+	}
+	.form-control{
+		background-color: none;
+		border: 0px;
+	}
+	.form-control:focus, .btn:focus{
+		box-shadow: none;
+	}
+/*--- Style général ---*/
+
+
+
+/*--- Formulaire style_2 ---*/
+	.style_2{
+		margin: 20px 0;
+	}
+  /*--- news_4 ---*/
+  body{
+	  background-image: url(C:\Users\Dell\Desktop\gestion_club_informatique_JEE_MYSQL_HIBERNATE-master\front\assets\images\bg.png);
+	  background-size: cover;
+	  background-repeat: no-repeat;
+  }
+    .news_4 form{
+		width: 800px;
+
+    	background-color: #fff;
+	   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+	   -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+	   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3); 
+	   width: -max-content;
+       justify-content: center;	   
+	   border-radius: 20px;
+	   padding: 40px;
+	   margin: 20px 0;
+    }
+    .news_4 form .form-row{
+    	margin-bottom: 15px;
+    }
+    .news_4 form h4{
+    	font-size: 20px;
+    	color: #000 !important;
+    	margin-bottom: 10px;
+    }
+    .news_4 form p{
+    	color: #777;
+    	font-size: 14px;
+    	margin: 25px 0;
+    }
+    .news_4 form label{
+    	font-size: 13px;
+    	font-weight: bold;
+    	color: #000 !important;
+    	letter-spacing: 0.5px;
+    }
+    .news_4 form .underline{
+     	width: 80px;
+		align-content:  center;
+     	margin-left: -220px;
+     	height: 3px;
+     	border: none;
+     	background-color: #6610f2;
+    }
+    .news_4 form .form-control{
+    	border: solid 2px #eee;
+    	border-radius: 40px;
+    	height: 35px;
+    	padding: 10px;
+        font-size: 13px;
+        color: #777;
+    } 
+    .news_4 form textarea.form-control{
+    	border-radius: 15px;
+    	height: 120px;
+    	padding: 20px;
+    }
+    .news_4 form .btn{
+    	background-color: #039BE5;
+    	color: #fff;
+		align-items: center;
+    	margin-top: 10px;
+		margin-left: auto;
+		margin-right: auto;
+		align-items: center;
+		text-align:center;
+    	border-radius: 15px;
+    	padding: 5px 20px;
+    	font-size: 14px;
+    	font-weight: bold;
+    	letter-spacing: 0.5px;
+    }
+
+	.news_4 form .foooter{
+		background-color: #32C1CE;
+	}
+  
+
+	.box {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 10px 2em;
+	  }
+	  
+	  .box :first-child {
+		  align-self: center;
+	  }
+
+	  .pic{
+		  padding-top: 10px;
+		  padding-right: 10px;
+		  height: 150px;
+	  }

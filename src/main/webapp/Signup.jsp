@@ -30,7 +30,7 @@
       <input type="text" name="fname" class="form-control" id="inputPassword3">
     </div>
   </div>
-  
+  <a href="loclhost:3001/cofirmAccount/">Click Me</a>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">CIN</label>
     <div class="col-sm-10">

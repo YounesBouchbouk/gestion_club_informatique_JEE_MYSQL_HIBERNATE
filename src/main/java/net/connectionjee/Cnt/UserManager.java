@@ -6,8 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import net.connectionjee.Role;
 import net.connectionjee.User;
+import net.connectionjee.Utils.SendEmailTLS;
 import utils.JPAutil;
 
 public class UserManager {
@@ -20,6 +24,8 @@ public class UserManager {
     
     public User create(String email, String password, String cIN, String cNE, String filiere, String inscription) {
     	User newuser = new  User();
+    	
+    	
     	newuser.setCIN(cIN);
         newuser.setCNE(cNE);
         newuser.setEmail(email);
@@ -27,7 +33,7 @@ public class UserManager {
         newuser.setInscription(inscription);
         newuser.setPassword(password);
         newuser.setState(0);
-        newuser.setToken(Generatenewtoken()); 
+        newuser.setToken(SendTokenToEmail()); 
     	EntityTransaction tx = entityManager.getTransaction();
     	tx.begin();
     	entityManager.persist(newuser);
@@ -35,6 +41,39 @@ public class UserManager {
     	addRole(newuser.getId(),2);
     	return newuser;
 
+    }
+    
+    public String SendTokenToEmail() {
+    	Session emailSession = SendEmailTLS.getMailConnection();
+    	
+    	String Token = Generatenewtoken();
+    	 try {
+
+             Message message = new MimeMessage(emailSession);
+             message.setFrom(new InternetAddress("ClubInfo@gmail.com"));
+             message.setRecipients(
+                     Message.RecipientType.TO,
+                     InternetAddress.parse("younesbouchbouk.py@gmail.com")
+             );
+             message.setSubject("ClubInfo : Please Confirm your Email ");
+//             message.setText("Dear  User,"
+//                     + "\n\n Please Confirm Your Email By Clicking Here!" + "your Token is " + Token );
+             message.setContent(
+                     "<h1>Dear User, </h1>"
+                     + "<div>Please Confirm Your Email By Clicking this Link : </div>"
+                     + "<div>   <a href=\"loclhost:3001/cofirmAccount/"+ Token +"\">Click Me</a>\r\n"
+                     + " </div>"
+                     + "",
+                    "text/html");
+             Transport.send(message);
+
+             System.out.println("Done");
+
+         } catch (MessagingException e) {
+             e.printStackTrace();
+         }
+    	 
+    	 return Token;
     }
     
     public String Generatenewtoken() {
@@ -95,6 +134,17 @@ public class UserManager {
         tx.commit();
     }
     
+    public boolean checkUserIfAdr(int id ) {
+    	User user = getUser(id);
+    	
+    	for (Role nb : user.getRoles()) {
+    		if(nb.getRoleid() == 2) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
     
     
     
@@ -114,7 +164,8 @@ public class UserManager {
         tx.begin();
         Query query = entityManager.createQuery("SELECT c FROM User c",User.class);
         List<User> users =  query.getResultList();
-        
+        tx.commit();
+
     	return users;
     }
     
@@ -129,6 +180,14 @@ public class UserManager {
     }
     
 
+    public int checkifEmailConfirmed(int id) {
+    	User logged = getUser(id);
+    	if(logged.getState() == 1) {
+    		return 1;
+    	}else {
+    		return -1;
+    	}
+    }
     
     public int confirmaccount(int id , String Token) {
     	User user = getUser(id);
