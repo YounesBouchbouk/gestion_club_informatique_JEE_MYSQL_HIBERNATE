@@ -8,7 +8,10 @@ import javax.persistence.Query;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
 import net.connectionjee.Role;
 import net.connectionjee.User;
 import net.connectionjee.Utils.SendEmailTLS;
@@ -24,7 +27,7 @@ public class UserManager {
     
     public User create(String email, String password, String cIN, String cNE, String filiere, String inscription) {
     	User newuser = new  User();
-    	
+    	String Token = Generatenewtoken();
     	
     	newuser.setCIN(cIN);
         newuser.setCNE(cNE);
@@ -33,38 +36,43 @@ public class UserManager {
         newuser.setInscription(inscription);
         newuser.setPassword(password);
         newuser.setState(0);
-        newuser.setToken(SendTokenToEmail()); 
+        newuser.setToken(Token); 
     	EntityTransaction tx = entityManager.getTransaction();
     	tx.begin();
     	entityManager.persist(newuser);
     	tx.commit();
-    	addRole(newuser.getId(),2);
+    	addRole(newuser.getId(),1);
+    	SendTokenToEmail(Token,newuser.getId(),newuser.getEmail());
     	return newuser;
 
     }
     
-    public String SendTokenToEmail() {
+    public String SendTokenToEmail(String Token , int id , String Email) {
     	Session emailSession = SendEmailTLS.getMailConnection();
-    	
-    	String Token = Generatenewtoken();
-    	 try {
+        	 try {
 
              Message message = new MimeMessage(emailSession);
              message.setFrom(new InternetAddress("ClubInfo@gmail.com"));
              message.setRecipients(
                      Message.RecipientType.TO,
-                     InternetAddress.parse("younesbouchbouk.py@gmail.com")
+                     InternetAddress.parse(Email)
              );
+          // Create the message part 
+             MimeBodyPart messageBodyPart = new MimeBodyPart();
+
+             // Fill the message
+             messageBodyPart.setText("<h1>Dear User, </h1>"
+                     + "<div>Please Confirm Your Email By Clicking this Link : </div>"
+                     + "<div> <a href=\"http://localhost:8084/HyberProjectStart/confirmAccount?token="+Token+"&id="+id +"\">Click Me</a>"
+                     + " </div>","UTF-8","html");
+
+             Multipart multipart = new MimeMultipart();
+             multipart.addBodyPart(messageBodyPart);
+             
              message.setSubject("ClubInfo : Please Confirm your Email ");
 //             message.setText("Dear  User,"
 //                     + "\n\n Please Confirm Your Email By Clicking Here!" + "your Token is " + Token );
-             message.setContent(
-                     "<h1>Dear User, </h1>"
-                     + "<div>Please Confirm Your Email By Clicking this Link : </div>"
-                     + "<div>   <a href=\"loclhost:3001/cofirmAccount/"+ Token +"\">Click Me</a>\r\n"
-                     + " </div>"
-                     + "",
-                    "text/html");
+             message.setContent(multipart);
              Transport.send(message);
 
              System.out.println("Done");

@@ -96,13 +96,13 @@
 	  
 	  if(student.getState() != 2){
 		  %>
-	  	<td><a type="button" href="/Disable?id=<% out.print(student.getId());%>" class="btn btn-danger">Disable</a></td>
+	  	<td><a href="DisableAcc.do?id=<% out.print(student.getId());%>" class="btn btn-danger">Disable</a></td>
 		  <%  
 	  }
 	  
 	  if(!manager.checkUserIfAdr(student.getId())){
 		 %>
-		  	  <td><a type="button" href="setToAdh.do?id=<% out.print(student.getId());%>" class="btn btn-success">Adherant</a></td>
+		  	  <td><a href="AddAdr.do?id=<% out.print(student.getId());%>" class="btn btn-success">Adherant</a></td>
 		 <%  
 	  }
 	  

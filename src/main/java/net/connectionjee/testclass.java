@@ -44,7 +44,7 @@ public class testclass {
            
            //System.out.println("we get this new" + a);
             
-            String isadm = bguser.SendTokenToEmail();
+            String isadm = bguser.SendTokenToEmail("ertretretertretretr",2,"ClubInfo@gmail.com");
             
             System.out.println("wache admin " + isadm );
 
