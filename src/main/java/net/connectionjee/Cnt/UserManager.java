@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import org.eclipse.persistence.config.QueryType;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -282,5 +284,30 @@ public class UserManager {
     	}
     	
     }
+    
+    
+    public int validate(String CNE, String password) {
+
+    	EntityTransaction tx = entityManager.getTransaction();
+		
+		User user = new User();
+		
+			// start a transaction
+			// get an username
+			 Query query = entityManager.createNativeQuery("select * from user where CNE = ? ", User.class);
+			query.setParameter(1, CNE);
+			
+			  user = (User) query.getSingleResult();
+						
+			if(user != null && user.getPassword().equals(password)) {
+				
+			System.out.println("Salut "+ user.getId());
+				return user.getId();
+			}
+		
+	
+			System.out.println("Salut NOTHING ");
+		return -1;
+	}
     
 }
