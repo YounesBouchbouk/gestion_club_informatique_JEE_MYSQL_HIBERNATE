@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="logo">
-                      <img src="/assets/images/logo.png" alt="" srcset="" height="100px" width="200px" >
+                      <img src="assets/images/logo.png" alt="" srcset="" height="100px" width="200px" >
                 </div>
             </div>
             <div class="col-12 col-lg-6">
@@ -33,8 +33,8 @@
 	  		<div class="col-12 col-lg-4 news_4 justify-content-center">
 	  			<form>
 					  <div class="box">
-						  <img src="/assets/images/logo.png" alt="" srcset="" width="350px">
-						  <img src="/assets/images/fpt.png" alt="" srcset="" width="350px" class="pic">
+						  <img src="assets/images/logo.png" alt="" srcset="" width="350px">
+						  <img src="assets/images/fpt.png" alt="" srcset="" width="350px" class="pic">
 						</div>
 					
 					<h1 class="text-center" >SIGNUP</h1>
@@ -76,9 +76,17 @@
 							<div class="col">
 								<label for="charset">Mot de passe</label>
 							  <input type="password" class="form-control">
+							</div>
+	  				</div>
+	  				
+	  				<div class="form-row">
+							<div class="col">
+								<label for="charset">Confirm</label>
+							  <input type="password" class="form-control">
 								<button class="btn justify-content-center">S'inscrire</button>
 							</div>
 	  				</div>
+	  				
 	  				
 	  			</form>
 	  		</div>

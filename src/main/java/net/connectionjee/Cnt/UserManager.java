@@ -287,6 +287,7 @@ public class UserManager {
     
     
     public int validate(String CNE, String password) {
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
 
     	EntityTransaction tx = entityManager.getTransaction();
 		
@@ -294,7 +295,7 @@ public class UserManager {
 		
 			// start a transaction
 			// get an username
-			 Query query = entityManager.createNativeQuery("select * from user where CNE = ? ", User.class);
+			Query query = entityManager.createNativeQuery("select * from user where CNE = ? ", User.class);
 			query.setParameter(1, CNE);
 			
 			  user = (User) query.getSingleResult();

@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
 <meta charset="ISO-8859-1">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -36,7 +35,6 @@
     padding: 10px;
   }
 </style>
-=======
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -207,33 +205,44 @@
         margin-top: 10px;
         font-size: 13px;
     }
+
+    .inpdiv{
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+    }
+    .srbtn{
+        width: 50%;
+        margin: 20px auto;
+    }
+
+    .btndiv{
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+    }
+
 </style>
 <script>
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
 });
 </script>
->>>>>>> 99dbcd2ce54ccc310764a7476682f6f018df5a9d
 </head>
 <body>
 
-<form action="Userstable" method="post">
-<<<<<<< HEAD
+<form action="Userstable" method="post" class="formdiv">
 
-<div class="row mb-3 formdiv">  
-
-    <label for="inputEmail3" class="col-sm-2 col-form-label">CNE</label>
-=======
+<div class="row mb-3 inpdiv">  
 <div style ="margin: 25xp" >
 <div   class="row mb-3">       
-    <label  style ="margin-right: 25xp" for="inputEmail3" class="col-sm-1 col-form-label">Keyword</label>
->>>>>>> 99dbcd2ce54ccc310764a7476682f6f018df5a9d
+    <label  style ="margin-right: 25xp" for="inputEmail3" class="col-sm-1 col-form-label">CIN</label>
     <div class="col-sm-10">
       <input type="text" style ="width: 450px" name="serchkey" class="form-control" id="inputPassword3">
     </div>
-<<<<<<< HEAD
-      <button type="submit"   class="btn btn-primary">Searche</button>
-
+    <div class="btndiv">
+      <button type="submit"   class="btn srbtn btn-primary">Searche</button>
+    </div>
 </div>
 
 
@@ -245,29 +254,10 @@ $(document).ready(function(){
     <a href="filter?fl=disbled" class="btn btn-danger">Dibled Account</a>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Email</th>
-      <th scope="col">CNE</th>
-      <th scope="col">CIN</th>
-      <th scope="col">Filier</th>
-      <th scope="col">Date Inscription</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  
-  <% 
-=======
+
   </div>
 </div>
 
-
-<button type="submit"   class="btn btn-primary">Search</button>
 
 </form>
 
@@ -302,12 +292,10 @@ $(document).ready(function(){
                         <th>Date of birth</th>
                         <th>Status</th>
                         <th>Action</th>
-                        <th>Role</th>
                     </tr>
                 </thead>
                 <tbody>
-                   <% 
->>>>>>> 99dbcd2ce54ccc310764a7476682f6f018df5a9d
+           <% 
   
   if(request.getAttribute("model") != null){
 	  
@@ -356,31 +344,24 @@ $(document).ready(function(){
 	  
 	  if(!manager.checkUserIfAdr(student.getId())){
 		 %>
-<<<<<<< HEAD
 		  	  <td><a href="AddAdr.do?id=<% out.print(student.getId());%>" class="btn btn-primary">Adherant</a></td>
-=======
  
 		  	  <td><a  style ="color:white" type="button" href="setToAdh.do?id=<% out.print(student.getId());%>" class="btn btn-success">Adherant</a></td>
 
->>>>>>> 99dbcd2ce54ccc310764a7476682f6f018df5a9d
 		 <%  
 	  }
 	  
 	  %>
 	
     </tr>
-<<<<<<< HEAD
 <% }	
  
  	    usr.clear();
   }%>
    
     
-  </tbody>
-</table>
+ 
 
-=======
-<% }	}%>
                 </tbody>
             </table>
             <div class="clearfix">
@@ -398,6 +379,5 @@ $(document).ready(function(){
         </div>
     </div>        
 </div>     
->>>>>>> 99dbcd2ce54ccc310764a7476682f6f018df5a9d
 </body>
 </html>
