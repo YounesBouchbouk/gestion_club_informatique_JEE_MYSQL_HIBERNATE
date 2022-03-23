@@ -9,23 +9,24 @@ import net.connectionjee.User;
 import net.connectionjee.UserModel;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet (urlPatterns = {"/Userstable","/AddAdr.do","/DisableAcc.do","/confirmAccount"})
+@WebServlet (urlPatterns = {"/Userstable","/AddAdr.do","/DisableAcc.do","/confirmAccount" , "/filter","/Activer.do"})
 
 public class Userstable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	UserManager usermng;
+	UserManager usermng =new UserManager();
 	
-	 @Override
-	public void init() throws ServletException {
-		 usermng = new UserManager();
-	}
+//	 @Override
+//	public void init() throws ServletException {
+//		 usermng = new UserManager();
+//	}
 	 
-    public Userstable() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+//    public Userstable() {
+//        super();
+//        // TODO Auto-generated constructor stub
+//    }
 
 	
 	
@@ -38,7 +39,6 @@ public class Userstable extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id")) ;
 			//System.out.println(id);
 			usermng.addRole(id, 2);
-			
 			List<User> listUsers =  usermng.getAllUsers();
 			
 			request.setAttribute("model", listUsers);
@@ -64,6 +64,24 @@ public class Userstable extends HttpServlet {
 			
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 			
+		}else if (path.equals("/filter")) {
+			String fl = request.getParameter("fl");
+	    	List<User> newliste = new ArrayList<User>();
+	    	newliste.clear();
+			switch(fl) {
+			case "notadr" : newliste = usermng.getNormalUsers(); break;
+			case "adr" : 	newliste = usermng.getAdrOnly();break;
+			case "disbled" : newliste = usermng.DisabledAccUsers();break;
+
+			}
+			request.setAttribute("model", newliste);
+			request.getRequestDispatcher("ListUsers.jsp").forward(request, response);
+		}else if(path.equals("/Activer.do")) {
+			int id = Integer.parseInt(request.getParameter("id")) ;
+			usermng.ActiverAccount(id);
+			List<User> listUsers =  usermng.getAllUsers();
+			request.setAttribute("model", listUsers);
+			request.getRequestDispatcher("ListUsers.jsp").forward(request, response);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package net.connectionjee.Cnt;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,9 +19,10 @@ import net.connectionjee.Utils.SendEmailTLS;
 import utils.JPAutil;
 
 public class UserManager {
-    private EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+//    private EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
 
     public User getUser(int id) {
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
         User user = entityManager.find(User.class,id); 
     	return  user;
     }
@@ -28,7 +30,8 @@ public class UserManager {
     public User create(String email, String password, String cIN, String cNE, String filiere, String inscription) {
     	User newuser = new  User();
     	String Token = Generatenewtoken();
-    	
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
     	newuser.setCIN(cIN);
         newuser.setCNE(cNE);
         newuser.setEmail(email);
@@ -38,9 +41,10 @@ public class UserManager {
         newuser.setState(0);
         newuser.setToken(Token); 
     	EntityTransaction tx = entityManager.getTransaction();
-    	tx.begin();
+    	if(!tx.isActive()) tx.begin();
     	entityManager.persist(newuser);
     	tx.commit();
+    	
     	addRole(newuser.getId(),1);
     	SendTokenToEmail(Token,newuser.getId(),newuser.getEmail());
     	return newuser;
@@ -124,8 +128,10 @@ public class UserManager {
     }
     
     public void addRole(int Id , int roleid) {
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
     	EntityTransaction tx = entityManager.getTransaction();
-    	tx.begin();
+    	if(!tx.isActive()) tx.begin();
         Query query2 = entityManager.createNativeQuery("INSERT INTO User_role (roleid, userid) VALUES (?,?)");
         query2.setParameter(1, roleid);
         query2.setParameter(2, Id);
@@ -134,8 +140,10 @@ public class UserManager {
     }
     
     public void RemoveFromAdh(int Id) {
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
     	EntityTransaction tx = entityManager.getTransaction();
-    	tx.begin();
+    	if(!tx.isActive()) tx.begin();
         Query query2 = entityManager.createNativeQuery("DELETE FROM User_role WHERE  roleid = 2 and userid = ? ");
         query2.setParameter(1, Id);
         query2.executeUpdate();
@@ -153,13 +161,38 @@ public class UserManager {
     	return false;
     }
     
+    public List<User> DisabledAccUsers(){
+    	List<User> listusers = getAllUsers();
+    	List<User> adrliste = new ArrayList<User>();
+    	
+    	for (User usr : listusers) {
+    		if(usr.getState() == 2) {
+    			adrliste.add(usr);
+    		}
+    	}
+    	return adrliste;
+    }
+    
+    public List<User> getNormalUsers() {
+    	List<User> listusers = getAllUsers();
+    	List<User> adrliste = new ArrayList<User>();
+    	
+    	for (User usr : listusers) {
+    		if(!checkUserIfAdr(usr.getId())) {
+    			adrliste.add(usr);
+    		}
+    	}
+    	return adrliste;
+    }
+    
     
     
     
     public void disableAccount(int id) {
-    	
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
     	 EntityTransaction tx = entityManager.getTransaction();
-         tx.begin();
+     	if(!tx.isActive()) tx.begin();
          Query query2 = entityManager.createNativeQuery("update user set state = 2 where id = ?");
          query2.setParameter(1, id);
          query2.executeUpdate();
@@ -167,23 +200,54 @@ public class UserManager {
          
     }
     
-    public List<User> getAllUsers(){
-    	EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        Query query = entityManager.createQuery("SELECT c FROM User c",User.class);
-        List<User> users =  query.getResultList();
-        tx.commit();
+    public void ActiverAccount(int id) {
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
 
+   	 EntityTransaction tx = entityManager.getTransaction();
+    	if(!tx.isActive()) tx.begin();
+        Query query2 = entityManager.createNativeQuery("update user set state = 1 where id = ?");
+        query2.setParameter(1, id);
+        query2.executeUpdate();
+        tx.commit();
+        
+   }
+    
+    public List<User> usersParMC(String mc) {
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+		List<User> usrs =
+		         entityManager.createQuery("select u from user u where u.CIN like :mc",User.class)
+		                       .setParameter("mc", "%"+mc+"%")
+		                      .getResultList(); 
+			return usrs;
+	}
+    
+    public List<User> getAllUsers(){
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
+    	EntityTransaction tx = entityManager.getTransaction();
+    	if(!tx.isActive()) tx.begin();
+        Query query = entityManager.createQuery("SELECT c FROM User c",User.class);
+        query.setHint("javax.persistence.cache.storeMode", "REFRESH");
+        List<User> users =  query.getResultList();
+        
+        for (User us : users) {
+        	System.out.println("id " + us.getId() + " status " + us.getState());
+        }
+        tx.commit();
+       // entityManager.close();
     	return users;
     }
     
-    public List<User> getUsersByRoleId(int Roleid){
-    	EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        Query query = entityManager.createNativeQuery("SELECT  id, email, password, CIN, CNE, filiere, inscription, token, state  FROM  User u  Join User_role r  WHERE   u.id = r.userid AND  r.roleid = ?",User.class);
-        query.setParameter(1, Roleid);
-        List<User> users =  query.getResultList();
-		return users;
+    public List<User> getAdrOnly(){
+    	List<User> listusers = getAllUsers();
+    	List<User> adrliste = new ArrayList<User>();
+    	
+    	for (User usr : listusers) {
+    		if(checkUserIfAdr(usr.getId())) {
+    			adrliste.add(usr);
+    		}
+    	}
+    	return adrliste;
     	
     }
     
@@ -198,6 +262,8 @@ public class UserManager {
     }
     
     public int confirmaccount(int id , String Token) {
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
     	User user = getUser(id);
     	String userToken = user.getToken();
     	

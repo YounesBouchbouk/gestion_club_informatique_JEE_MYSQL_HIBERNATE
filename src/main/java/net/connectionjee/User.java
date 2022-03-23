@@ -3,6 +3,7 @@ package net.connectionjee;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.eclipse.persistence.annotations.Cache;
+
 @Entity
 @Table(name = "user")
+//@Cacheable(false)
 public class User {
 	 @Id
 	 @Column(name = "id")    

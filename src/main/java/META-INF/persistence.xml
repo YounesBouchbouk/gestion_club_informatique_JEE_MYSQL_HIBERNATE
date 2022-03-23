@@ -7,6 +7,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<class>net.connectionjee.Role</class>
 	<class>net.connectionjee.User</class>
 	<class>net.connectionjee.Userstatus</class>
+	<shared-cache-mode>NONE</shared-cache-mode>
+	
 <properties>
 	<property name="javax.persistence.jdbc.url"
 		value="jdbc:mysql://localhost:3306/projetjee?characterEncoding=utf8"/>
@@ -17,7 +19,6 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<property name="eclipselink.logging.level" value="FINE"/>
 	<property name="eclipselink.ddl-generation" value="none"/>
 	<property name="eclipselink.allow-zero-id" value="true"/>
-	
 </properties>
 </persistence-unit>
 </persistence>
