@@ -9,14 +9,5 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>LoginCnt</display-name>
-    <servlet-name>LoginCnt</servlet-name>
-    <servlet-class>net.connectionjee.Cnt.LoginCnt</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginCnt</servlet-name>
-    <url-pattern>/LoginCnt</url-pattern>
-  </servlet-mapping>
+  
 </web-app>
