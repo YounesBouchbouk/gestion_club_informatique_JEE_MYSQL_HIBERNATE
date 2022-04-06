@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="logo">
-                      <img src="assets/images/logo.png" alt="" srcset="" height="100px" width="200px" >
+                      <img src="assets/images/AI_Email_Pr.jpg" alt="" srcset="" height="100px" width="200px" >
                 </div>
             </div>
             <div class="col-12 col-lg-6">

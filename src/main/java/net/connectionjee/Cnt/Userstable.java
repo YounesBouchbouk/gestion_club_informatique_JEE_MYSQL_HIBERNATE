@@ -18,18 +18,6 @@ public class Userstable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserManager usermng =new UserManager();
 	
-//	 @Override
-//	public void init() throws ServletException {
-//		 usermng = new UserManager();
-//	}
-	 
-//    public Userstable() {
-//        super();
-//        // TODO Auto-generated constructor stub
-//    }
-
-	
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());

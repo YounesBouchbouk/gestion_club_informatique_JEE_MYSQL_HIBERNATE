@@ -22,6 +22,7 @@ public class Role {
 	@Column(name = "roleid")    
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int roleid;
+	
 	private String role_name;
 	
 	 @ManyToMany
