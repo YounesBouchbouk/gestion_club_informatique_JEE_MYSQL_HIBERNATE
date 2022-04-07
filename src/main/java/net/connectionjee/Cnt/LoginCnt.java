@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import net.connectionjee.User;
 
-@WebServlet(urlPatterns = "/login", asyncSupported=true)
+@WebServlet (urlPatterns = "/LoginCnt")
 
 public class LoginCnt extends HttpServlet {
 
@@ -35,35 +35,50 @@ public class LoginCnt extends HttpServlet {
 		 
 		 HttpSession session = req.getSession();
 
-		 String CNE = req.getParameter("CNE");
+		 	String CNE = req.getParameter("CNE");
 			String password = req.getParameter("password");
 			int A = usermng.validate(CNE, password);
 			
 			if (A != -1) {
 				//User Auser;
 				
-				if(usermng.checkifEmailConfirmed(A) == 1) {
-					System.out.println("Email Confirmed");
-					System.out.println(A);
-					session.setAttribute("User_id", A);
-					req.setAttribute("Succmsg", "Email Confirmed");
-					req.getRequestDispatcher("Home.jsp").forward(req, resp);
-
-					
-				}	else if(usermng.checkIfAccountDisabled(A) == -1) {
-					req.setAttribute("errmsg", "Votre Compte est desactivé , Contact votre admin ");
+//				if(usermng.checkifEmailConfirmed(A) == 1) {
+//					System.out.println("Email Confirmed");
+//					System.out.println(A);
+//					session.setAttribute("User_id", A);
+//					req.setAttribute("Succmsg", "Email Confirmed");
+//					req.getRequestDispatcher("Home.jsp").forward(req, resp);
+//
+//					
+//				}	else if(usermng.checkIfAccountDisabled(A) == -1) {
+//					req.setAttribute("errmsg", "Votre Compte est desactivé , Contact votre admin ");
+//					//	System.out.println("Email not Confirmed");
+//						req.getRequestDispatcher("Login.jsp").forward(req, resp);
+//				}
+//				
+//				else if(usermng.checkifEmailConfirmed(A) == -1) {
+//					req.setAttribute("errmsg", "Vous Navez pas encore confirmer votre Email ");
+//				//	System.out.println("Email not Confirmed");
+//					req.getRequestDispatcher("Login.jsp").forward(req, resp);
+//				} 
+				
+				if(usermng.checkifEmailConfirmed(A) != -1) {
+					if(usermng.checkIfAccountDisabled(A) != -1) {
+						System.out.println("Start the session");
+						System.out.println(A);
+						session.setAttribute("User_id", A);
+						req.setAttribute("Succmsg", "Email Confirmed");
+						req.getRequestDispatcher("/EventsCnt").forward(req, resp);
+					}else {
+						req.setAttribute("errmsg", "Votre Compte est desactivé , Contact votre admin ");
+						//	System.out.println("Email not Confirmed");
+							req.getRequestDispatcher("Login.jsp").forward(req, resp);
+					}
+				}else {
+					req.setAttribute("errmsg", "Vous Navez pas encore confirmer votre Email ");
 					//	System.out.println("Email not Confirmed");
 						req.getRequestDispatcher("Login.jsp").forward(req, resp);
 				}
-				
-				else if(usermng.checkifEmailConfirmed(A) == -1) {
-					req.setAttribute("errmsg", "Vous Navez pas encore confirmer votre Email ");
-				//	System.out.println("Email not Confirmed");
-					req.getRequestDispatcher("Login.jsp").forward(req, resp);
-
-				
-	
-				} 
 				
 				
 			}else {

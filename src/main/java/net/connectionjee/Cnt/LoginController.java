@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import net.connectionjee.User;
 
-@WebServlet(urlPatterns = "/login", asyncSupported=true)
+@WebServlet(urlPatterns = "/loginooooo", asyncSupported=true)
 
 public class LoginController extends HttpServlet {
 

@@ -90,6 +90,15 @@ public class UserManager {
     	 return Token;
     }
     
+    public int checkIfAccountDisabled(int id) {
+    	User logged = getUser(id);
+    	if(logged.getState() == 2) {
+    		return -1;
+    	}else {
+    		return 1;
+    	}
+    }
+    
     public String Generatenewtoken() {
     	int n = 40;
     	String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

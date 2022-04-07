@@ -58,13 +58,14 @@ public class SignupServ extends HttpServlet {
 			//UserManager userCnt = new UserManager();
 			newuser = usermng.create(email, password, cin, cne, filier, bDate);
 		
-        
+			request.setAttribute("errmsg", "Password not matches");
+			request.getRequestDispatcher("AuthSign.jsp").forward(request, response);
        
 			
 		}else {
 			
 			request.setAttribute("errmsg", "Password not matches");
-			request.getRequestDispatcher("Signup.jsp").forward(request, response);
+			request.getRequestDispatcher("AuthSign.jsp").forward(request, response);
 
 		}
 

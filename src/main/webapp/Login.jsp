@@ -12,13 +12,14 @@
     <title>Login</title>
 </head>
 <body> 
-
-    <!-- Entête -->
+<%-- <h3 style="color: red;">${errmsg}</h3> --%>
+<%-- <h4 style="color :green">${Succmsg}</h4> --%>
+<form action="Login.do" method="POST">
     <div class="nav-head  sticky-top">
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="logo">
-                      <img src="assets/images/AI_Email_Pr.jpg" alt="" srcset="" height="100px" width="200px" >
+                      <img src="assets/images/logo.png" alt="as" height="100px" width="200px" >
                 </div>
             </div>
             <div class="col-12 col-lg-6">
@@ -34,25 +35,37 @@
                     <img src="assets/images/logo.png" alt="" srcset="" width="350px">
                     <img src="assets/images/fpt.png" alt="" srcset="" width="350px" class="pic">
                   </div>
-                <h6 class="card-title mb-3">Vous êtes :</h6>
-                <div class="d-flex flex-row"> <label class="radio mr-1"> <input type="radio" name="add" value="anz" checked> <span> <i class="fa fa-user"></i> Membre de bureau </span> </label> <label class="radio"> <input type="radio" name="adherent" value="adherent"> <span> <i class="fa fa-plus-circle"></i> Adherent </span> </label> </div>
+                <h6 class="card-title mb-3">Vous etes :</h6>
+                <div class="d-flex flex-row"> <label class="radio mr-1"> <input type="radio" name="typeuser" value="anz" checked> <span> <i class="fa fa-user"></i> Membre de bureau </span> </label> <label class="radio"> <input type="radio" name="typeuser" value="adherent"> <span> <i class="fa fa-plus-circle"></i> Adherent </span> </label> </div>
                 <h6 class="information mt-4">Veuillez saisir votre <u>CNE</u> et <u>mot de passe</u> : </h6>
+                
+                
+                	<div class="alert alert-danger" role="alert">
+  					${errmsg} 
+					</div>
+                	<div class="alert alert-success" role="alert">
+  					${Succmsg} 
+					</div>
+                
+                
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <!-- <label for="name">Name</label> --> <input class="form-control" type="text" placeholder="CNE"> </div>
+                            <!-- <label for="name">Name</label> --> <input  name ="CNE" class="form-control" type="text" placeholder="CNE"> </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <div class="input-group"> <input class="form-control" type="password" placeholder="Mot de passe"> </div>
+                            <div class="input-group"> <input class="form-control" name ="password" type="password" placeholder="Mot de passe"> </div>
                         </div>
                     </div>
                 </div>
                 <small>Club Informatique privacy</small>
-                 <button class="btn btn-primary btn-block confirm-button">Se Connecter </button>
+                 <button type="submit" class="btn btn-primary btn-block confirm-button">Se Connecter </button>
             </div>
         </div>
-    </div></body>
+    </div>
+    </form>
+    </body>
 </html>

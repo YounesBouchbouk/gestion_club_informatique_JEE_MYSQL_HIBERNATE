@@ -28,11 +28,13 @@
 </style>
 
 <body>
+<div style="width: 100%">
+<%@ include file="parts/AdminHeader.jsp" %>
+</div>
 
 
 
-
-	<div class="container">
+<div class="container">
 	<form method="post" action="Event"  enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleInputEmail1">Le titre de l'evenement : </label>

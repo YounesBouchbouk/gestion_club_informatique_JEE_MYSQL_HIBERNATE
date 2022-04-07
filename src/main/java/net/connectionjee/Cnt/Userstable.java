@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet (urlPatterns = {"/Userstable","/AddAdr.do","/DisableAcc.do","/confirmAccount" , "/filter","/Activer.do"})
+@WebServlet (urlPatterns = {"/Userstable","/AddAdr.do","/DisableAcc.do","/confirmAccount" , "/filter","/Activer.do","/Absent.do"})
 
 public class Userstable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +22,13 @@ public class Userstable extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String path=request.getServletPath();
+		if(path.equals("/Absent.do")) {
+			int id = Integer.parseInt(request.getParameter("id")) ;
+			List<User> listUsers =  usermng.getAllUsers();
+			System.out.println(path);
+			request.setAttribute("model", listUsers);
+			request.getRequestDispatcher("ListUsers.jsp").forward(request, response);
+		}else
 
 		if(path.equals("/AddAdr.do")) {
 			int id = Integer.parseInt(request.getParameter("id")) ;
