@@ -230,6 +230,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<%@ include file="parts/Header.jsp" %>
 
 <form action="Userstable" method="post" class="formdiv">
 

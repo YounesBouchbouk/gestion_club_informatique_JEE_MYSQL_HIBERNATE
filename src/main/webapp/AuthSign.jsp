@@ -10,6 +10,7 @@
 	<link rel="stylesheet"  href="font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+
 	<!-- Entête -->
       <div class="nav-head  sticky-top">
         <div class="row">
