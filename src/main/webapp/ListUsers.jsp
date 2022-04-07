@@ -295,6 +295,9 @@ $(document).ready(function(){
                         <th>Date of birth</th>
                         <th>Status</th>
                         <th>Action</th>
+                        <th>       </th>
+                        <th>Abscence</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -328,9 +331,7 @@ $(document).ready(function(){
       
       %></td>
       
-      
-	  
-	  <%
+      <%
 	  UserManager manager = new UserManager();
 	  
 	  if(student.getState() != 2){
@@ -348,13 +349,16 @@ $(document).ready(function(){
 	  if(!manager.checkUserIfAdr(student.getId())){
 		 %>
 		  	  <td><a href="AddAdr.do?id=<% out.print(student.getId());%>" class="btn btn-primary">Adherant</a></td>
- 
-		  	  <td><a  style ="color:white" type="button" href="setToAdh.do?id=<% out.print(student.getId());%>" class="btn btn-success">Adherant</a></td>
 
+		  	  <td><input type="checkbox" id="abscent" <% out.print(student.getId());%>name="horns"></td>
+
+              
 		 <%  
 	  }
 	  
 	  %>
+	  
+	  
 	
     </tr>
 <% }	
