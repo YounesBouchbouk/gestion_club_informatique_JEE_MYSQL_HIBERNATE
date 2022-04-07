@@ -55,6 +55,8 @@ public class SignupServ extends HttpServlet {
 		
 		
 		if(password.equals(Cpassword)) {
+			System.out.println("hnaaaa");
+
 			//UserManager userCnt = new UserManager();
 			newuser = usermng.create(email, password, cin, cne, filier, bDate);
 		
@@ -63,7 +65,7 @@ public class SignupServ extends HttpServlet {
        
 			
 		}else {
-			
+			System.out.println("anahan");
 			request.setAttribute("errmsg", "Password not matches");
 			request.getRequestDispatcher("AuthSign.jsp").forward(request, response);
 
