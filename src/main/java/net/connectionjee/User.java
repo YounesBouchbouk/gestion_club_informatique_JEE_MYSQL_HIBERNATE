@@ -38,13 +38,11 @@ public class User {
 	 private String token;
 	 private int state;
 	 
-	 
 	 @ManyToMany
 	    @JoinTable( name = "user_role",
 	                joinColumns = @JoinColumn( name = "userid" ),
 	                inverseJoinColumns = @JoinColumn( name = "roleid" ) )
 	 private List<Role> roles = new ArrayList<>();
-	 
 	 
 	 
 	public User() {

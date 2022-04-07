@@ -245,7 +245,7 @@ public class UserManager {
     	List<User> adrliste = new ArrayList<User>();
     	
     	for (User usr : listusers) {
-    		if(checkUserIfAdr(usr.getId())) {
+    		if(checkUserIfAdr(usr.getId()) && usr.getState() != 2) {
     			adrliste.add(usr);
     		}
     	}
