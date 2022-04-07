@@ -263,14 +263,6 @@ public class UserManager {
     	}
     }
     
-    public int checkIfAccountDisabled(int id) {
-    	User logged = getUser(id);
-    	if(logged.getState() == 2) {
-    		return -1;
-    	}else {
-    		return 1;
-    	}
-    }
     public int confirmaccount(int id , String Token) {
     	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
 

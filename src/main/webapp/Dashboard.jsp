@@ -36,7 +36,7 @@
 </style>
 <body>
 
-<c:import url="EventsCnt" />
+<%@ include file="parts/Header.jsp" %>
 
 
 

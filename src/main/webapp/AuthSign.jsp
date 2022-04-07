@@ -10,6 +10,7 @@
 	<link rel="stylesheet"  href="font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+
 	<!-- Entête -->
       <div class="nav-head  sticky-top">
         <div class="row">
@@ -31,7 +32,7 @@
 	  	<!-- Formulaires_1 -->
 	  	<div class="row style_2 d-flex justify-content-center">
 	  		<div class="col-12 col-lg-4 news_4 justify-content-center">
-	  			<form >
+	  			<form>
 					  <div class="box">
 						  <img src="assets/images/logo.png" alt="" srcset="" width="350px">
 						  <img src="assets/images/fpt.png" alt="" srcset="" width="350px" class="pic">

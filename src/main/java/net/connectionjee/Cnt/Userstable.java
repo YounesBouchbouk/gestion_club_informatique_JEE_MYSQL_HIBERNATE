@@ -45,15 +45,13 @@ public class Userstable extends HttpServlet {
 			int st = usermng.confirmaccount(id, token);
 			if(st == 1) {
 				System.out.println("Validé");
-				request.setAttribute("Succmsg", "Email Confirmed");
-				request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}else {
-				System.err.println("Un problem  de l'activation de votre account , contacté vous votre admin");
-				request.setAttribute("errmsg", "Email Confirmed");
-				request.getRequestDispatcher("Login.jsp").forward(request, response);
+				System.err.println("non Validé");
 
 			}
-						
+			
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
+			
 		}else if (path.equals("/filter")) {
 			String fl = request.getParameter("fl");
 	    	List<User> newliste = new ArrayList<User>();
