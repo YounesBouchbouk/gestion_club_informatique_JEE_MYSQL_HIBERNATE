@@ -32,7 +32,7 @@
 	  	<!-- Formulaires_1 -->
 	  	<div class="row style_2 d-flex justify-content-center">
 	  		<div class="col-12 col-lg-4 news_4 justify-content-center">
-	  			<form>
+	  			<form action="SignupServ" method="post">
 					  <div class="box">
 						  <img src="assets/images/logo.png" alt="" srcset="" width="350px">
 						  <img src="assets/images/fpt.png" alt="" srcset="" width="350px" class="pic">
@@ -46,44 +46,50 @@
 	  				<div class="form-row">
 	  					<div class="col">
 	  						<label for="name">Nom</label>
-						    <input type="text" class="form-control">
+						    <input type="text" name="lname" class="form-control">
 	  					</div>
 	  					<div class="col">
 	  						<label for="name">Prénom</label>
-						    <input type="text" class="form-control">
+						    <input type="text" name="fname" class="form-control">
 	  					</div>
 	  				</div>
                       <div class="form-row">
                         <div class="col">
                             <label for="charset">CIN</label>
-                          <input type="text" class="form-control">
+                          <input type="text" name="cin" class="form-control">
                         </div>
                         <div class="col">
                             <label for="charset">CNE</label>
-                          <input type="text" class="form-control">
+                          <input type="text" name="cne" class="form-control">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
                             <label for="name">filiere</label>
-                          <input type="text" class="form-control">
+                          <input type="text" name="filier" class="form-control">
                         </div>
                         <div class="col">
                             <label for="name">email</label>
-                          <input type="text" class="form-control">
+                          <input type="text" name="email" class="form-control">
                         </div>
                     </div>
+                    <div class="form-row">
+							<div class="col">
+								<label for="charset">Date Naissance :</label>
+							  <input type="date" name="bDate" class="form-control">
+							</div>
+	  				</div>
 	  				<div class="form-row">
 							<div class="col">
 								<label for="charset">Mot de passe</label>
-							  <input type="password" class="form-control">
+							  <input type="password" name="password" class="form-control">
 							</div>
 	  				</div>
 	  				
 	  				<div class="form-row">
 							<div class="col">
 								<label for="charset">Confirm</label>
-							  <input type="password" class="form-control">
+							  <input type="password" name="Cpassword" class="form-control">
 								<button class="btn justify-content-center">S'inscrire</button>
 							</div>
 	  				</div>

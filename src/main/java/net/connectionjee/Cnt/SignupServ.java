@@ -64,7 +64,7 @@ public class SignupServ extends HttpServlet {
 		}else {
 			
 			request.setAttribute("errmsg", "Password not matches");
-			request.getRequestDispatcher("Signup.jsp").forward(request, response);
+			request.getRequestDispatcher("AuthSign.jsp").forward(request, response);
 
 		}
 
