@@ -335,6 +335,7 @@ $(document).ready(function(){
 		  %>
  
 	  	<td><a style ="color:white" type="button" href="DisableAcc.do?id=<% out.print(student.getId());%>" class="btn btn-danger">Disable</a></td>
+	  	<td><a style ="color:white" type="button" href="Absent.do?id=<% out.print(student.getId());%>" class="btn btn-danger">A</a></td>
 
 		  <%  
 	  }else if(student.getState() == 2){

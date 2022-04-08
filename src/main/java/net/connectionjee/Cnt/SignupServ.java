@@ -18,7 +18,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-@WebServlet(urlPatterns = "/SignupServ", asyncSupported=true)
+@WebServlet(urlPatterns = "/SignupServ")
 
 public class SignupServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,14 +55,17 @@ public class SignupServ extends HttpServlet {
 		
 		
 		if(password.equals(Cpassword)) {
+			System.out.println("hnaaaa");
+
 			//UserManager userCnt = new UserManager();
 			newuser = usermng.create(email, password, cin, cne, filier, bDate);
 		
-        
+			request.setAttribute("errmsg", "Password not matches");
+			request.getRequestDispatcher("AuthSign.jsp").forward(request, response);
        
 			
 		}else {
-			
+			System.out.println("anahan");
 			request.setAttribute("errmsg", "Password not matches");
 			request.getRequestDispatcher("AuthSign.jsp").forward(request, response);
 
