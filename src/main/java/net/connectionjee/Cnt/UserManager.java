@@ -15,6 +15,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import net.connectionjee.Absence;
 import net.connectionjee.Role;
 import net.connectionjee.User;
 import net.connectionjee.Utils.SendEmailTLS;
@@ -27,6 +28,23 @@ public class UserManager {
     	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
         User user = entityManager.find(User.class,id); 
     	return  user;
+    }
+    
+    public  List<Absence> GetUserAbs(int id) {
+      
+        EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+		List<Absence> abs =
+		         entityManager.createNativeQuery("select * from abscence  where THEUSER_id = ?",Absence.class)
+		                       .setParameter(1, id)
+		                      .getResultList(); 
+			return abs;
+
+    }
+    
+    public int nombreAbcence(int id ) {
+    	List<Absence> abs = this.GetUserAbs(id);
+    	
+    	return abs.size();
     }
     
     public User create(String email, String password, String cIN, String cNE, String filiere, String inscription) {

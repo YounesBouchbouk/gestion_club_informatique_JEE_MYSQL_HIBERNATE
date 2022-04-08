@@ -62,20 +62,20 @@ public class LoginCnt extends HttpServlet {
 //					req.getRequestDispatcher("Login.jsp").forward(req, resp);
 //				} 
 				
-				if(usermng.checkifEmailConfirmed(A) != -1) {
-					if(usermng.checkIfAccountDisabled(A) != -1) {
+				if(usermng.checkIfAccountDisabled(A)  != -1) {
+					if(usermng.checkifEmailConfirmed(A) != -1) {
 						System.out.println("Start the session");
 						System.out.println(A);
 						session.setAttribute("User_id", A);
 						req.setAttribute("Succmsg", "Email Confirmed");
 						req.getRequestDispatcher("/EventsCnt").forward(req, resp);
 					}else {
-						req.setAttribute("errmsg", "Votre Compte est desactivé , Contact votre admin ");
+						req.setAttribute("errmsg", "Vous Navez pas encore confirmer votre Email ");
 						//	System.out.println("Email not Confirmed");
 							req.getRequestDispatcher("Login.jsp").forward(req, resp);
 					}
 				}else {
-					req.setAttribute("errmsg", "Vous Navez pas encore confirmer votre Email ");
+					req.setAttribute("errmsg", "Votre Compte est desactivé , Contact votre admin ");
 					//	System.out.println("Email not Confirmed");
 						req.getRequestDispatcher("Login.jsp").forward(req, resp);
 				}

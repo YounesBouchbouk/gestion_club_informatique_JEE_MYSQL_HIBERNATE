@@ -292,6 +292,7 @@ $(document).ready(function(){
                         <th>Filiére</th>
                         <th>Date of birth</th>
                         <th>Status</th>
+                        <th>nb Abs</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -326,10 +327,17 @@ $(document).ready(function(){
       
       %></td>
       
+      <td><% 
       
+       UserManager manager = new UserManager();
+      
+      out.print(manager.nombreAbcence(student.getId()));
+      
+      
+      %></td>
 	  
 	  <%
-	  UserManager manager = new UserManager();
+	 
 	  
 	  if(student.getState() != 2){
 		  %>

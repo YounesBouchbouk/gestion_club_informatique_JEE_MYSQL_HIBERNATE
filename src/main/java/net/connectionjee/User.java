@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 import org.eclipse.persistence.annotations.Cache;
@@ -38,6 +40,10 @@ public class User {
 	 private String token;
 	 private int state;
 	 
+	 @OneToMany
+	 
+	 private List<Absence> user_abscence;
+	 
 	 @ManyToMany
 	    @JoinTable( name = "user_role",
 	                joinColumns = @JoinColumn( name = "userid" ),
@@ -51,6 +57,16 @@ public class User {
 	}
 	
 	
+	public List<Absence> getAbsense() {
+		return user_abscence;
+	}
+
+
+	public void setAbsense(List<Absence> absense) {
+		this.user_abscence = absense;
+	}
+
+
 	public User(int id, String email, String password, String cIN, String cNE, String filiere, String inscription,
 			String token, int state) {
 		super();

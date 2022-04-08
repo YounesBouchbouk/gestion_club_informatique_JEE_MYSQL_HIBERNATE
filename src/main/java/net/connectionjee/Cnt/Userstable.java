@@ -23,7 +23,10 @@ public class Userstable extends HttpServlet {
 		String path=request.getServletPath();
 		if(path.equals("/Absent.do")) {
 			int id = Integer.parseInt(request.getParameter("id")) ;
-			List<User> listUsers =  usermng.getAllUsers();
+	        AbsenceManager env  = new AbsenceManager();
+	        System.out.println("hada l id "  + id);
+	        env.markAbsence(id);
+			List<User> listUsers =  usermng.getAdrOnly();
 			System.out.println(path);
 			request.setAttribute("model", listUsers);
 			request.getRequestDispatcher("ListUsers.jsp").forward(request, response);
@@ -50,9 +53,12 @@ public class Userstable extends HttpServlet {
 			int st = usermng.confirmaccount(id, token);
 			if(st == 1) {
 				System.out.println("Validé");
+				request.setAttribute("Succmsg", "Votre Email et Bien Confirmé ");
+				request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}else {
 				System.err.println("non Validé");
-
+				request.setAttribute("errmsg", "Failed , Please Contact admin");
+				request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}
 			
 			request.getRequestDispatcher("Login.jsp").forward(request, response);

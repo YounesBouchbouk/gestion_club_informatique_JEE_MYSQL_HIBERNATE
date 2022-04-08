@@ -8,6 +8,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<class>net.connectionjee.Role</class>
 	<class>net.connectionjee.User</class>
 	<class>net.connectionjee.Userstatus</class>
+	<class>net.connectionjee.Absence</class>
 	<shared-cache-mode>NONE</shared-cache-mode>
 	
 <properties>
