@@ -22,8 +22,8 @@
             <div class="col-12 col-lg-6">
                 <p class="head-gram">
                 </p>
-            </div>
-        </div>
+            </div>   
+        </div>         
       </div>
 	<!-- Entête -->
     
@@ -36,7 +36,7 @@
 					  <div class="box">
 						  <img src="assets/images/logo.png" alt="" srcset="" width="350px">
 						  <img src="assets/images/fpt.png" alt="" srcset="" width="350px" class="pic">
-						</div>
+						</div> 
 					
 					<hr class="underline ml-0">
 	  				<h4>S'inscrire</h4>

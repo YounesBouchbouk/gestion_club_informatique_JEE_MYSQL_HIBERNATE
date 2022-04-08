@@ -18,7 +18,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-@WebServlet(urlPatterns = "/SignupServ", asyncSupported=true)
+@WebServlet(urlPatterns = "/SignupServ")
 
 public class SignupServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;

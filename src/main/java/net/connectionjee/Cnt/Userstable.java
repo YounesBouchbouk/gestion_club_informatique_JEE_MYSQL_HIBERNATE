@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import net.connectionjee.User;
-import net.connectionjee.UserModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +28,6 @@ public class Userstable extends HttpServlet {
 			request.setAttribute("model", listUsers);
 			request.getRequestDispatcher("ListUsers.jsp").forward(request, response);
 		}else
-
 		if(path.equals("/AddAdr.do")) {
 			int id = Integer.parseInt(request.getParameter("id")) ;
 			//System.out.println(id);
