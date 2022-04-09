@@ -58,10 +58,8 @@ public class EventManager {
 		 Date date1= new SimpleDateFormat("yyyy-MM-dd").parse(date);
 		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		 LocalDateTime now = LocalDateTime.now(); 
-		 System.out.println(date1);
 		 Date date2= new SimpleDateFormat("yyyy-MM-dd").parse(dtf.format(now));
 
-		 System.out.println(date2);
 		 
 		 if(date1.after(date2)) {
 			 System.out.println("jdiiiiide");

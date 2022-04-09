@@ -47,10 +47,10 @@
           <a class="nav-link" href="EventsCnt">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Contact">Contact</a>
+          <a class="nav-link" href="ContactUs.jsp">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Projects</a>
+          <a class="nav-link" href="#">Profil</a>
         </li>
 <!--         <li class="nav-item"> -->
 <!--           <a class="nav-link" href="#"></a> -->
@@ -62,10 +62,7 @@
 
     <!-- Right elements -->
     <div class="d-flex align-items-center">
-      <!-- Icon -->
-      <a class="text-reset me-3" href="#">
-        <i class="fas fa-shopping-cart"></i>
-      </a>
+     
 
       <!-- Notifications -->
       <div class="mr-4">
