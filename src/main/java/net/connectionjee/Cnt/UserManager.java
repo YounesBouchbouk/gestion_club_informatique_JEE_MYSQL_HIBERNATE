@@ -47,11 +47,12 @@ public class UserManager {
     	return abs.size();
     }
     
-    public User create(String email, String password, String cIN, String cNE, String filiere, String inscription) {
+     public User create(String Fname, String Lname, String email, String password, String cIN, String cNE, String filiere, String inscription) {
     	User newuser = new  User();
     	String Token = Generatenewtoken();
-    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
-
+    	
+    	newuser.setFname(Fname);
+    	newuser.setLname(Lname);
     	newuser.setCIN(cIN);
         newuser.setCNE(cNE);
         newuser.setEmail(email);
@@ -61,10 +62,9 @@ public class UserManager {
         newuser.setState(0);
         newuser.setToken(Token); 
     	EntityTransaction tx = entityManager.getTransaction();
-    	if(!tx.isActive()) tx.begin();
+    	tx.begin();
     	entityManager.persist(newuser);
     	tx.commit();
-    	
     	addRole(newuser.getId(),1);
     	SendTokenToEmail(Token,newuser.getId(),newuser.getEmail());
     	return newuser;
