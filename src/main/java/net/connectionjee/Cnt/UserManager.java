@@ -47,11 +47,12 @@ public class UserManager {
     	return abs.size();
     }
     
-    public User create(String email, String password, String cIN, String cNE, String filiere, String inscription) {
+     public User create(String Fname, String Lname, String email, String password, String cIN, String cNE, String filiere, String inscription) {
     	User newuser = new  User();
     	String Token = Generatenewtoken();
-    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
-
+    	
+    	newuser.setFname(Fname);
+    	newuser.setLname(Lname);
     	newuser.setCIN(cIN);
         newuser.setCNE(cNE);
         newuser.setEmail(email);
@@ -61,10 +62,9 @@ public class UserManager {
         newuser.setState(0);
         newuser.setToken(Token); 
     	EntityTransaction tx = entityManager.getTransaction();
-    	if(!tx.isActive()) tx.begin();
+    	tx.begin();
     	entityManager.persist(newuser);
     	tx.commit();
-    	
     	addRole(newuser.getId(),1);
     	SendTokenToEmail(Token,newuser.getId(),newuser.getEmail());
     	return newuser;
@@ -337,5 +337,51 @@ public class UserManager {
 			System.out.println("Salut NOTHING ");
 		return -1;
 	}
+	
+	 
+    public User ProfilData(int id) {
+  	  User userData = new User();
+  	  
+         Query query = entityManager.createNativeQuery("select * from user where id = ? ", User.class);
+  		query.setParameter(1, id);
+
+  		userData = (User) query.getSingleResult();
+ 
+        	return userData;
+        	
+      }
+    
+    public int ChangePassword(String OldPasswd ,String NewPasswd, int id) {
+    	
+    	User newuser =getUser(id);;
+    	
+    	/* Query query = entityManager.createNativeQuery("select * from user where id = ? ", User.class);
+		query.setParameter(1, id);
+        query.executeUpdate(); */
+
+			
+		String MyPass = newuser.getPassword();
+
+		System.out.println("2  Your password is "+MyPass); 
+
+    	
+    	if (OldPasswd.equals(MyPass)) {
+    		
+    		
+    		 EntityTransaction tx = entityManager.getTransaction();
+             tx.begin();
+             Query query2 = entityManager.createNativeQuery("update user set password = ? where id = ?");
+             query2.setParameter(1, NewPasswd);
+             query2.setParameter(2, id);
+             query2.executeUpdate();
+             tx.commit();
+             return 1;
+          
+    	} else return -1;
+
+    	
+    	
+    }
+    
     
 }

@@ -42,7 +42,9 @@ public class SignupServ extends HttpServlet {
 		doGet(request, response);
 		
 		String email = request.getParameter("email") ;
-		String fname = request.getParameter("fname") ;
+
+		String Fname = request.getParameter("Fname") ;
+		String Lname = request.getParameter("Lname") ;
 		String cin = request.getParameter("cin") ;
 		String cne = request.getParameter("cne") ;
 		String filier = request.getParameter("filier") ;
@@ -58,7 +60,7 @@ public class SignupServ extends HttpServlet {
 			System.out.println("hnaaaa");
 
 			//UserManager userCnt = new UserManager();
-			newuser = usermng.create(email, password, cin, cne, filier, bDate);
+			newuser = usermng.create(Fname,Lname,email, password, cin, cne, filier, bDate);
 		
 			request.setAttribute("errmsg", "Password not matches");
 			request.getRequestDispatcher("AuthSign.jsp").forward(request, response);

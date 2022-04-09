@@ -49,11 +49,11 @@
 	  				
 	  					<div class="col">
 	  						<label for="name">Nom</label>
-						    <input type="text" name="fname" class="form-control">
+						    <input type="text" name="Fname" class="form-control">
 	  					</div>
 	  					<div class="col">
 	  						<label for="name">Prenom</label>
-						    <input type="text" name = "lname" class="form-control">
+						    <input type="text" name = "Lname" class="form-control">
 	  					</div>
 	  		
 	  				</div>

@@ -26,6 +26,12 @@ public class User {
 	 @Column(name = "id")    
 	 @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	 private int id;
+	
+	 @Column (name="Fname")
+	 private String Fname;
+	  
+	  @Column (name="Lname")
+	 private String Lname;
 	 @Column (name="email")
 	 private String email;
 	 
@@ -67,10 +73,12 @@ public class User {
 	}
 
 
-	public User(int id, String email, String password, String cIN, String cNE, String filiere, String inscription,
+	public User(int id, String Fname , String Lname ,String email, String password, String cIN, String cNE, String filiere, String inscription,
 			String token, int state) {
 		super();
 		this.id = id;
+		this.Fname = Fname;
+		this.Lname = Lname;
 		this.email = email;
 		this.password = password;
 		CIN = cIN;
@@ -139,6 +147,24 @@ public class User {
 		this.state = state;
 	}
 	 
+	 public String getFname() {
+		return Fname;
+	}
+
+
+	public void setFname(String fname) {
+		Fname = fname;
+	}
+
+
+	public String getLname() {
+		return Lname;
+	}
+
+
+	public void setLname(String lname) {
+		Lname = lname;
+	}
 	 public List<Role> getRoles() {
 	        return roles;
 	    }

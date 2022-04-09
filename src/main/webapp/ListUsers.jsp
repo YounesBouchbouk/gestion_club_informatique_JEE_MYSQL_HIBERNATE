@@ -283,6 +283,8 @@ $(document).ready(function(){
                 <thead>
                     <tr>
                         <th>ID</th>
+			<th>Nom</th>
+			<th>Prénom</th>
                         <th>Email</th>
                         <th>CNE</th>
                         <th>CIN</th>						
@@ -306,6 +308,8 @@ $(document).ready(function(){
 %>
 	<tr>
       <th scope="row"><% out.print(student.getId());%></th>
+      <td><%out.print(student.getFname());%></td>
+      <td><%out.print(student.getLname());%></td>	
       <td><% out.print(student.getEmail());%></td>
       
       <td><% out.print(student.getCNE());%></td>
