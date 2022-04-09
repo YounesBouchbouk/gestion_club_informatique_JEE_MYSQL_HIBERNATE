@@ -337,5 +337,51 @@ public class UserManager {
 			System.out.println("Salut NOTHING ");
 		return -1;
 	}
+	
+	 
+    public User ProfilData(int id) {
+  	  User userData = new User();
+  	  
+         Query query = entityManager.createNativeQuery("select * from user where id = ? ", User.class);
+  		query.setParameter(1, id);
+
+  		userData = (User) query.getSingleResult();
+ 
+        	return userData;
+        	
+      }
+    
+    public int ChangePassword(String OldPasswd ,String NewPasswd, int id) {
+    	
+    	User newuser =getUser(id);;
+    	
+    	/* Query query = entityManager.createNativeQuery("select * from user where id = ? ", User.class);
+		query.setParameter(1, id);
+        query.executeUpdate(); */
+
+			
+		String MyPass = newuser.getPassword();
+
+		System.out.println("2  Your password is "+MyPass); 
+
+    	
+    	if (OldPasswd.equals(MyPass)) {
+    		
+    		
+    		 EntityTransaction tx = entityManager.getTransaction();
+             tx.begin();
+             Query query2 = entityManager.createNativeQuery("update user set password = ? where id = ?");
+             query2.setParameter(1, NewPasswd);
+             query2.setParameter(2, id);
+             query2.executeUpdate();
+             tx.commit();
+             return 1;
+          
+    	} else return -1;
+
+    	
+    	
+    }
+    
     
 }
