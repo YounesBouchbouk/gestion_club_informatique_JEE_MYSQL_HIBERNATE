@@ -50,7 +50,7 @@
           <a class="nav-link" href="ContactUs.jsp">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profil</a>
+          <a class="nav-link" href="Profil">Profil</a>
         </li>
 <!--         <li class="nav-item"> -->
 <!--           <a class="nav-link" href="#"></a> -->
@@ -67,7 +67,7 @@
       <!-- Notifications -->
       <div class="mr-4">
       <div style="margin-right: 20px">
-           <button type="button" class="btn btn-danger ">LogOut</button>
+           <a type="button" class="btn btn-danger " href="Login.jsp">LogOut</a>
       
       </div>
      

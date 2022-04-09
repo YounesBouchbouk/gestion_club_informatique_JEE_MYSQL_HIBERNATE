@@ -250,9 +250,9 @@ $(document).ready(function(){
 </form>
 
 <div class="btngoup">
-    <a href="filter?fl=notadr" class="btn btn-success">Not Adérnat</a>
-    <a href="filter?fl=adr"  class="btn btn-primary">Adérant</a>
-    <a href="filter?fl=disbled" class="btn btn-danger">Dibled Account</a>
+    <a href="filter?fl=notadr" class="btn btn-success">non Aderants</a>
+    <a href="filter?fl=adr"  class="btn btn-primary">Aderants</a>
+    <a href="filter?fl=disbled" class="btn btn-danger">Comptes desactiv�</a>
 </div>
 
 
@@ -284,14 +284,12 @@ $(document).ready(function(){
                     <tr>
                         <th>ID</th>
 			<th>Nom</th>
-			<th>Prénom</th>
-                        <th>Email</th>
                         <th>CNE</th>
                         <th>CIN</th>						
-                        <th>Filiére</th>
+                        <th>Filiere</th>
                         <th>Date of birth</th>
                         <th>Status</th>
-                        <th>nb Abs</th>
+                        <th>Absence</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -308,9 +306,7 @@ $(document).ready(function(){
 %>
 	<tr>
       <th scope="row"><% out.print(student.getId());%></th>
-      <td><%out.print(student.getFname());%></td>
-      <td><%out.print(student.getLname());%></td>	
-      <td><% out.print(student.getEmail());%></td>
+      <td><%out.print(student.getFname() + " " + student.getLname());%></td>
       
       <td><% out.print(student.getCNE());%></td>
       
@@ -357,8 +353,6 @@ $(document).ready(function(){
 		 %>
 		  	  <td><a href="AddAdr.do?id=<% out.print(student.getId());%>" class="btn btn-primary">Adherant</a></td>
  
-		  	  <td><a  style ="color:white" type="button" href="setToAdh.do?id=<% out.print(student.getId());%>" class="btn btn-success">Adherant</a></td>
-
 		 <%  
 	  }
 	  

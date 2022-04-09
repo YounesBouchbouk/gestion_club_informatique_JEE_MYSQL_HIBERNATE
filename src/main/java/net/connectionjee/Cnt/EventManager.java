@@ -111,17 +111,17 @@ public class EventManager {
 
          // Fill the message
          messageBodyPart.setText("<h1>Dear User, </h1>"
-                 + "<div>Admin has annence a new Event </div>"
-                 + "<div> <h3> Title : " + theEvent.getTitle() + "<h3/>"
+                 + "<div>L'administrateur a annoncé un nouvel événement </div>"
+                 + "<div> <h3> titre : " + theEvent.getTitle() + "<h3/>"
                  + "<div><h3> Date : " + theEvent.getDate_d() + theEvent.getTimm_db()  + "<h3/> </div>"
                  + "<div> <h3> Description : " + theEvent.getDescription() + "<h3/> </div>"
-                 + "Please be there ! " 
+                 + "Soyez-là, s'il vous plaît! " 
                  + " </div>","UTF-8","html");
 
          Multipart multipart = new MimeMultipart();
          multipart.addBodyPart(messageBodyPart);
          
-         message.setSubject("ClubInfo : New Event has Annenced ");
+         message.setSubject("ClubInfo : L'administrateur a annoncé un nouvel événement");
 //         message.setText("Dear  User,"
 //                 + "\n\n Please Confirm Your Email By Clicking Here!" + "your Token is " + Token );
          message.setContent(multipart);

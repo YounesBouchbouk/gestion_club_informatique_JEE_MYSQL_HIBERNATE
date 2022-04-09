@@ -45,16 +45,8 @@ public class ProfilServ extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 		
-		 HttpSession session = request.getSession(false);
+			HttpSession session = request.getSession(false);
 		 
 		 int User_id =(int)session.getAttribute("User_id");
 		 System.out.print("  Your id is :  " +User_id);
@@ -65,6 +57,16 @@ public class ProfilServ extends HttpServlet {
 				request.getRequestDispatcher("Profil.jsp").forward(request, response);
 				
 				
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		
+		
 			
 	}
 

@@ -47,8 +47,13 @@ public class LoginCnt extends HttpServlet {
 						System.out.println("Start the session");
 						System.out.println(A);
 						session.setAttribute("User_id", A);
-						req.setAttribute("Succmsg", "Email Confirmed");
-						req.getRequestDispatcher("/EventsCnt").forward(req, resp);
+						session.setMaxInactiveInterval(60*30*30*1000);
+						System.out.println("ache ban lk " + usermng.checkifAdmin(A));
+						if(usermng.checkifAdmin(A) == 1) {
+							req.getRequestDispatcher("/ListUsers.jsp").forward(req, resp);
+						}else {
+							req.getRequestDispatcher("/EventsCnt").forward(req, resp);
+						}
 					}else {
 						req.setAttribute("errmsg", "Vous Navez pas encore confirmer votre Email ");
 						//	System.out.println("Email not Confirmed");

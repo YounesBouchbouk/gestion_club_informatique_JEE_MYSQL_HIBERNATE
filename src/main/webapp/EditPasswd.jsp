@@ -43,7 +43,7 @@
                          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Enregistrer</button></div>
                 </div>
               
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Retour à l'acceuil</button></div>
+                <div class="mt-5 text-center"><a class="btn btn-primary profile-button" href="EventsCnt" type="submit">Retour à l'acceuil</a></div>
             </div>
         </div>
       

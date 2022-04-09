@@ -4,6 +4,8 @@
 <%@page import="java.util.List"%>
 <%@page import="net.connectionjee.Evenement"%>
 <%@page import="net.connectionjee.Cnt.EventManager"%> 
+<%@page import="net.connectionjee.Cnt.UserManager"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +35,15 @@
 		display: inline-block;
 		text-decoration: none;
 	}
+	
+	.divofalert{
+		width :"100%";
+		text-align: "center";
+		display:  "flex";
+		justify-content: "center";
+		align-items:  :"center";
+		background-color: "black"
+	}
 </style>
 <body>
 
@@ -44,8 +55,36 @@
 
 <%  
  List<Evenement> events = (List<Evenement>)request.getAttribute("result");
+ String user_id = (String)request.getAttribute("session");
+ int id = Integer.parseInt(user_id);
  EventManager env = new EventManager();
-
+ UserManager usermanage = new UserManager();
+ %>
+ 
+ <div class="divofalert">
+ 
+ <blockquote class="blockquote text-center">
+  <p class="mb-0 display-4">Vous avez <%=(usermanage.nombreAbcence(id))
+						      %>  d'absences</p>
+			<p class="mb-0 display-4">il vous rest  <%=(5 - usermanage.nombreAbcence(id))
+						      %>  absences</p>			      
+  <footer class="blockquote-footer ">
+  <div class="alert alert-danger" role="alert">
+si vous avez complété le nombre d'absence vous serez automatiquement eliminé</div>
+</cite></footer>
+</blockquote>
+ 
+<%--  <h1 style="text-align: 'center'">Vous avez <%=(usermanage.nombreAbcence(id)) --%>
+<%-- 						      %> nombre d'absence</h1> --%>
+						      
+<%-- 						      <h1>il vous rest  <%=(5 - usermanage.nombreAbcence(id)) --%>
+<%-- 						      %> nombre d'absence</h1> --%>
+						      
+<!-- <p class="lead"> -->
+<!-- une vous avez comlété le nombre d'absence vous serez automatiqment eliminé</p> -->
+<!--   </div> -->
+ 
+ <% 
   for(Evenement event : events)
   {
 %>

@@ -50,7 +50,8 @@ public class UserManager {
      public User create(String Fname, String Lname, String email, String password, String cIN, String cNE, String filiere, String inscription) {
     	User newuser = new  User();
     	String Token = Generatenewtoken();
-    	
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
     	newuser.setFname(Fname);
     	newuser.setLname(Lname);
     	newuser.setCIN(cIN);
@@ -62,7 +63,7 @@ public class UserManager {
         newuser.setState(0);
         newuser.setToken(Token); 
     	EntityTransaction tx = entityManager.getTransaction();
-    	tx.begin();
+    	if(!tx.isActive()) tx.begin();
     	entityManager.persist(newuser);
     	tx.commit();
     	addRole(newuser.getId(),1);
@@ -86,14 +87,16 @@ public class UserManager {
 
              // Fill the message
              messageBodyPart.setText("<h1>Dear User, </h1>"
-                     + "<div>Please Confirm Your Email By Clicking this Link : </div>"
+                     + "<div>\r\n"
+                     + "Veuillez confirmer votre e-mail en cliquant sur ce lien : </div>"
                      + "<div> <a href=\"http://localhost:8084/HyberProjectStart/confirmAccount?token="+Token+"&id="+id +"\">Click Me</a>"
                      + " </div>","UTF-8","html");
 
              Multipart multipart = new MimeMultipart();
              multipart.addBodyPart(messageBodyPart);
              
-             message.setSubject("ClubInfo : Please Confirm your Email ");
+             message.setSubject("ClubInfo : \r\n"
+             		+ "Merci de confirmer votre adresse e-mail");
 //             message.setText("Dear  User,"
 //                     + "\n\n Please Confirm Your Email By Clicking Here!" + "your Token is " + Token );
              message.setContent(multipart);
@@ -341,7 +344,8 @@ public class UserManager {
 	 
     public User ProfilData(int id) {
   	  User userData = new User();
-  	  
+  	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
          Query query = entityManager.createNativeQuery("select * from user where id = ? ", User.class);
   		query.setParameter(1, id);
 
@@ -354,7 +358,8 @@ public class UserManager {
     public int ChangePassword(String OldPasswd ,String NewPasswd, int id) {
     	
     	User newuser =getUser(id);;
-    	
+    	EntityManager entityManager=JPAutil.getEntityManager("HyberProjectStart");
+
     	/* Query query = entityManager.createNativeQuery("select * from user where id = ? ", User.class);
 		query.setParameter(1, id);
         query.executeUpdate(); */

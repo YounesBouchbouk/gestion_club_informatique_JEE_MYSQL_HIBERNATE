@@ -49,9 +49,9 @@
         <li class="nav-item">
           <a class="nav-link" href="EventForm.jsp">Evenement</a>
         </li>
-<!--         <li class="nav-item"> -->
-<!--           <a class="nav-link" href="#"></a> -->
-<!--         </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="Profil">Profil</a>
+        </li>
       </ul>
       <!-- Left links -->
     </div>

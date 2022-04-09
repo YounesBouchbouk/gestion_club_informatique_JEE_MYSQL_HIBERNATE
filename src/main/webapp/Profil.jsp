@@ -35,28 +35,33 @@
 </head>
 <body>
  
+<%@ include file="parts/Header.jsp" %>
 
 
-	<form id ="theForm" action="ProfilServ" method="post"> 	
-	
-			<button type="submit" class="btn btn-primary">Afficher Infos  </button>
-	
-	</form>
 	
 	
 	
 				<form action="ProfilServ"  onsubmit="redirect(this);">   
 				
 				  		<div class="container rounded bg-white mt-5 mb-5">
-		
+		<%
+						if (request.getAttribute("MyData") != null) {
+
+							User TheUser = (User) request.getAttribute("MyData");
+							
+
+							
+						%> 
 			<div class="row">
 				<div class="col-md-3 border-right">
 					<div
 						class="d-flex flex-column align-items-center text-center p-3 py-5">
 						<img class="rounded-circle mt-5" width="150px"
 							src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-							class="font-weight-bold">Said</span><span
-							class="text-black-50">Said@Salut.com</span><span> </span>
+							class="font-weight-bold"><%=(TheUser.getFname())
+						      %></span><span
+							class="text-black-50"><%=(TheUser.getEmail())
+						      %></span><span> </span>
 					</div>
 				</div>
 				<div class="col-md-5 border-right">
@@ -65,14 +70,7 @@
 							class="d-flex justify-content-between align-items-center mb-3">
 							<h4 class="text-right">Informations personnelles</h4>
 							 
-							<%
-						if (request.getAttribute("MyData") != null) {
-
-							User TheUser = (User) request.getAttribute("MyData");
 							
-
-							
-						%> 
 						
 					 
 					
@@ -128,8 +126,8 @@
 						</div>
 
 						<div class="mt-5 text-center">
-							<button class="btn btn-primary profile-button" type="button">Retour
-								à l'acceuil</button>
+							<a class="btn btn-primary profile-button" href="EventsCnt" type="button">Retour
+								à l'acceuil</a>
 						</div>
 					</div>
 				</div>

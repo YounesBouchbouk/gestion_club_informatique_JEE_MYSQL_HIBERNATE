@@ -5,6 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import net.connectionjee.User;
+
 import java.io.IOException;
 
 
@@ -28,6 +31,12 @@ public class EventsCnt extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		EventManager eventmanager = new EventManager();
+		HttpSession session = request.getSession(false);
+		 
+		 int User_id =(int)session.getAttribute("User_id");
+		 System.out.print("  Your id is :  " +User_id);
+		 
+		request.setAttribute("session", String.valueOf(User_id) );
 		request.setAttribute("result", eventmanager.getAllEvent());
 
 		request.getRequestDispatcher("/Dashboard.jsp").forward(request, response);
